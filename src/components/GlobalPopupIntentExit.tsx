@@ -65,14 +65,7 @@ const GlobalPopupIntentExit: React.FC<GlobalPopupIntentExitProps> = ({
         setIsPermanentlyDismissed(true);
         
         // Track conversion analytics
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'exit_intent_conversion', {
-            event_category: 'engagement',
-            event_label: window.location.pathname,
-            page_location: window.location.href,
-            page_title: document.title
-          });
-        }
+        console.log('Exit intent conversion tracked');
 
         // ✅ NEW: Redirect to bonus page after successful submission
         console.log('Redirecting to bonus page...');
@@ -104,13 +97,7 @@ const GlobalPopupIntentExit: React.FC<GlobalPopupIntentExitProps> = ({
     console.log('Exit intent popup shown on:', window.location.pathname);
     
     // Track popup displays
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'exit_intent_shown', {
-        event_category: 'engagement',
-        event_label: window.location.pathname,
-        page_location: window.location.href
-      });
-    }
+    console.log('Exit intent popup shown tracked');
   };
   
   const handlePopupClose = () => {
@@ -120,12 +107,7 @@ const GlobalPopupIntentExit: React.FC<GlobalPopupIntentExitProps> = ({
     onClose();
     
     // Track popup closes (for optimization)
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'exit_intent_closed', {
-        event_category: 'engagement',
-        event_label: window.location.pathname
-      });
-    }
+    console.log('Exit intent popup closed tracked');
   };
 
   const handleDismissPermanently = () => {
@@ -140,12 +122,7 @@ const GlobalPopupIntentExit: React.FC<GlobalPopupIntentExitProps> = ({
     console.log('Popup dismissed for current session only (will show again on refresh)');
     
     // Track permanent dismissal
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'exit_intent_dismissed_permanently', {
-        event_category: 'engagement',
-        event_label: window.location.pathname
-      });
-    }
+    console.log('Exit intent popup dismissed permanently tracked');
   };
   
   // Don't render if disabled for this route OR temporarily dismissed (unless manually triggered)

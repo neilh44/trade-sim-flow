@@ -31,9 +31,7 @@ export const ResourceManagement = () => {
       filtered = filtered.filter(resource => resource.type === filterType);
     }
 
-    if (filterCategory !== 'all') {
-      filtered = filtered.filter(resource => resource.category === filterCategory);
-    }
+    // Category filtering removed - category field doesn't exist in schema
 
     setFilteredResources(filtered);
   }, [resources, searchTerm, filterType, filterCategory]);
@@ -143,10 +141,7 @@ export const ResourceManagement = () => {
                       <Badge className={getTypeColor(resource.type)}>
                         {resource.type}
                       </Badge>
-                      <Badge className={getCategoryColor(resource.category)}>
-                        {resource.category}
-                      </Badge>
-                      {resource.is_free && (
+                      {!resource.is_premium && (
                         <Badge variant="outline">Free</Badge>
                       )}
                     </div>

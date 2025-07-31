@@ -84,8 +84,8 @@ export const UserManagement = () => {
                     <h3 className="text-lg font-semibold text-foreground">
                       {user.full_name || 'Anonymous User'}
                     </h3>
-                    <Badge variant={getRoleBadgeVariant(user.role)}>
-                      {user.role || 'user'}
+                    <Badge variant={user.is_admin ? "destructive" : "secondary"}>
+                      {user.is_admin ? 'admin' : 'user'}
                     </Badge>
                   </div>
                   
